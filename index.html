@@ -1,0 +1,64 @@
+﻿<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Dice Roll</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            text-align: center;
+            margin: 50px;
+        }
+
+        button {
+            font-size: 18px;
+            padding: 10px 20px;
+            margin: 10px;
+        }
+
+        #output {
+            font-size: 24px;
+            font-weight: bold;
+            margin-top: 20px;
+            word-spacing: 60px;
+        }
+    </style>
+</head>
+<body>
+
+    <h1>LEFT | RIGHT | CENTER</h1>
+
+    <button onclick="rollDice(1)">Roll 1 Die</button>
+    <button onclick="rollDice(2)">Roll 2 Dice</button>
+    <button onclick="rollDice(3)">Roll 3 Dice</button>
+
+    <div id="output"></div>
+
+    <script>
+        function rollDice(numDice) {
+            // Simulate rolling a single six-sided die
+            function rollSingleDie() {
+                return Math.floor(Math.random() * 6) + 1;
+            }
+
+            let result = "";
+            for (let i = 0; i < numDice; i++) {
+                const rollResult = rollSingleDie();
+                if (rollResult === 1) {
+                    result += "RIGHT ";
+                } else if (rollResult === 2) {
+                    result += "LEFT ";
+                } else if (rollResult === 3 || rollResult === 4) {
+                    result += "CENTER ";
+                } else if (rollResult === 5 || rollResult === 6) {
+                    result += "KEEP ";
+                }
+            }
+
+            document.getElementById("output").innerText = result.trim();
+        }
+    </script>
+
+</body>
+</html>
